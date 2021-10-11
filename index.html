@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./assets/validasi.js"></script>
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Form Validasi Vaksinasi</title> 
+</head>
+<body style="background-color: #DCDCDC">
+    <div style="background-color: #000080; height: 100px;">
+        <div style="display: flex; justify-content: space-between; margin-right: 50px; margin-left: 50px">
+            <div style="margin-top: 20px; margin-bottom: 20px">
+                <img src="/assets/LOGO ITS.png" alt="" style="width: 60px;">
+            </div>
+            <div style="margin-top: 30px; margin-bottom: 30px">
+                <h1 style="font-size: 30px; color: white">
+                    Christoffer Ivano
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container content">
+        <h1 class="text-center pt-5">Form Tatap Muka & Validasi Vaksinasi</h1>
+        <form autocomplete="off" name="validasiForm" onsubmit="return validateForm()">
+            <div class="form-group mt-5">
+                <label class="font-weight-bold mt-1">Nama Lengkap</label>
+                <input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" maxlength="50">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold mt-1">NRP</label>
+                <input type="number" name="nrp" placeholder="NRP" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold mt-1">Email</label>
+                <input type="email" name="email" placeholder="example@gmail.com" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold mt-1">Domisili</label>
+                <input type="text" name="domisili" placeholder="Domisili" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold mt-1">Departemen</label>
+                <select name="fakultas" id="departemen" class="form-control" required>
+                    <option value='0'>Pilih Departemen</option>
+                    <option value='teknik_informatika'>Teknik Informatika</option>
+                    <option value='sistem_informasi'>Sistem Informasi</option>
+                    <option value='teknologi_informasi'>Teknologi Informasi</option>
+                    <option value='teknik_elektro'>Teknik Elektro</option>
+                    <option value='teknik_biomedik'>Teknik Biomedik</option>
+                    <option value='teknik_komputer'>Teknik Komputer</option>  
+                </select>
+            </div>
+            <label class="font-weight-bold mt-1">Status Vaksin</label>
+                <br>
+                <input type="radio" id="dosis0" name="status" value="3" checked>
+                <label for="dosis0">Belum vaksin</label><br>
+                <input type="radio" id="dosis1" name="status" value="1">
+                <label for="dosis1">Sudah Vaksin - Dosis 1</label><br>  
+                <input type="radio" id="dosis2" name="status" value="2">
+                <label for="dosis2">Sudah Vaksin - Dosis 2</label><br>
+            <button type="submit" class="btn btn-primary mt-5" style="margin-bottom: 20px;">Submit</button>
+        </form>
+    </div>
+    <div style="background-color: #000080; height: 40px;">
+        <div style="text-align: center; vertical-align: middle">
+            <h1 style="font-size: 10px; color: white; padding-top: 15px">
+                Christoffer Ivano - 05111940000091
+            </h1>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            var nama = document.forms["validasiForm"]["nama"].value;
+            if (nama == "" || nama == null) {
+                alert("Nama belum diisi");
+                return false;
+            }
+        
+            var nrp = document.forms["validasiForm"]["nrp"].value;
+            if (nrp == "" || nrp == null) {
+                alert("NRP belum diisi");
+                return false;
+            }
+
+            var nrp = document.forms["validasiForm"]["nrp"].value;
+            if (nrp > 14 || nrp < 10) {
+                alert("NRP harus berjumlah antara 10 sampai 14 angka");
+                return false;
+            }
+
+            var email = document.forms["validasiForm"]["email"].value;
+            if (email == "" || email == null) {
+                alert("Email belum diisi");
+                return false;
+            }
+        
+            var domisili = document.forms["validasiForm"]["domisili"].value;
+            if (domisili == "" || domisili == null) {
+                alert("Domisili belum diisi");
+                return false;
+            }
+        
+            if (document.forms["validasiForm"]["departemen"].selectedIndex < 1) {
+                alert("Departemen belum diisi");
+                return false;
+            }
+        alert("Data berhasil disubmit");
+        }
+    </script>
+</body>
+</html>
